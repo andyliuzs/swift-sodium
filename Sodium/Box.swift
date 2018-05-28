@@ -347,6 +347,29 @@ public class Box {
 
         return message
     }
+    
+    
+    public  func _sha512(message: Bytes) -> Bytes?{
+        guard let result:Bytes = sha512(message: message) else {
+            print("_sha512 return error")
+            return nil
+        }
+        return result
+    }
+    
+    private  func sha512(message: Bytes) -> Bytes?{
+        var outPut = Bytes(count: message.count)
+        
+        if .SUCCESS == crypto_hash_sha512(&outPut,message,CUnsignedLongLong(message.count)).exitCode {
+            
+        }else {
+            print("guard else sha512")
+            return nil
+            
+        }
+        //  print("end sha512")
+        return outPut
+    }
 }
 
 extension Box: KeyPairGenerator {
