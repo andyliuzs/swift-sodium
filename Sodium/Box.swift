@@ -10,7 +10,28 @@ public class Box {
 
     public typealias MAC = Bytes
     public typealias Beforenm = Bytes
-
+    
+    public  func sha512(message: Bytes) -> Bytes?{
+        guard let result:Bytes = _sha512(message: message) else {
+            print("sha512 return error")
+            return nil
+        }
+        return result
+    }
+    
+    public  func _sha512(message: Bytes) -> Bytes?{
+        var outPut = Bytes(count: hash512Bytes)
+        
+        if .SUCCESS == crypto_hash_sha512(&outPut,message,CUnsignedLongLong(message.count)).exitCode {
+            
+        }else {
+            print("guard else sha512")
+            return nil
+            
+        }
+        //  print("end sha512")
+        return outPut
+    }
     /**
      Encrypts a message with a recipient's public key and a sender's secret key.
 
