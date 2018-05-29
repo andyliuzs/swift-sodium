@@ -6,6 +6,7 @@ public class Box {
     public let Primitive = String(validatingUTF8:crypto_box_primitive())
     public let BeforenmBytes = Int(crypto_box_beforenmbytes())
     public let SealBytes = Int(crypto_box_sealbytes())
+    public let hash512Bytes = Int(crypto_hash_bytes())
 
     public typealias MAC = Bytes
     public typealias Beforenm = Bytes
@@ -346,29 +347,6 @@ public class Box {
         ).exitCode else { return nil }
 
         return message
-    }
-    
-    
-    public  func _sha512(message: Bytes) -> Bytes?{
-        guard let result:Bytes = sha512(message: message) else {
-            print("_sha512 return error")
-            return nil
-        }
-        return result
-    }
-    
-    private  func sha512(message: Bytes) -> Bytes?{
-        var outPut = Bytes(count: message.count)
-        
-        if .SUCCESS == crypto_hash_sha512(&outPut,message,CUnsignedLongLong(message.count)).exitCode {
-            
-        }else {
-            print("guard else sha512")
-            return nil
-            
-        }
-        //  print("end sha512")
-        return outPut
     }
 }
 

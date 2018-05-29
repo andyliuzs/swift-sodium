@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		038365151A5A51D20081136D /* SecretBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038365141A5A51D20081136D /* SecretBox.swift */; };
+		0477EEE420BD21A400E6DE6D /* CryPtoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0477EEE320BD21A400E6DE6D /* CryPtoExtension.swift */; };
+		0497982820BC3CD600E3E965 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497982720BC3CD600E3E965 /* Crypto.swift */; };
 		04AD2F0520B26077004C34A6 /* KeySwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F0420B26077004C34A6 /* KeySwitch.swift */; };
-		04AD2F0B20B26FFF004C34A6 /* Base16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F0820B26FFF004C34A6 /* Base16.swift */; };
-		04AD2F0C20B26FFF004C34A6 /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F0920B26FFF004C34A6 /* Base32.swift */; };
-		04AD2F0D20B26FFF004C34A6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F0A20B26FFF004C34A6 /* StringExtension.swift */; };
 		04AD2F0F20B27609004C34A6 /* Hash512.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F0E20B27609004C34A6 /* Hash512.swift */; };
-		04AD2F1120B28FBD004C34A6 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F1020B28FBD004C34A6 /* Util.swift */; };
+		04AD2F1120B28FBD004C34A6 /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F1020B28FBD004C34A6 /* Base32.swift */; };
 		04AD2F1320B2944A004C34A6 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD2F1220B2944A004C34A6 /* Exception.swift */; };
 		091C7CDA1A507E95002E5351 /* ShortHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C7CD91A507E95002E5351 /* ShortHash.swift */; };
 		091C7CDC1A50839D002E5351 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C7CDB1A50839D002E5351 /* Sign.swift */; };
@@ -114,12 +113,11 @@
 
 /* Begin PBXFileReference section */
 		038365141A5A51D20081136D /* SecretBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretBox.swift; sourceTree = "<group>"; };
+		0477EEE320BD21A400E6DE6D /* CryPtoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryPtoExtension.swift; sourceTree = "<group>"; };
+		0497982720BC3CD600E3E965 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		04AD2F0420B26077004C34A6 /* KeySwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySwitch.swift; sourceTree = "<group>"; };
-		04AD2F0820B26FFF004C34A6 /* Base16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base16.swift; sourceTree = "<group>"; };
-		04AD2F0920B26FFF004C34A6 /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
-		04AD2F0A20B26FFF004C34A6 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		04AD2F0E20B27609004C34A6 /* Hash512.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash512.swift; sourceTree = "<group>"; };
-		04AD2F1020B28FBD004C34A6 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		04AD2F1020B28FBD004C34A6 /* Base32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		04AD2F1220B2944A004C34A6 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		091125881F5F210700CBF38A /* crypto_secretstream_xchacha20poly1305.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = crypto_secretstream_xchacha20poly1305.h; sourceTree = "<group>"; };
 		0917824D1CA164970022765D /* crypto_core_hchacha20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto_core_hchacha20.h; sourceTree = "<group>"; };
@@ -277,22 +275,13 @@
 		04AD2F0620B26FA0004C34A6 /* extension-sodium */ = {
 			isa = PBXGroup;
 			children = (
+				0497982720BC3CD600E3E965 /* Crypto.swift */,
 				04AD2F0420B26077004C34A6 /* KeySwitch.swift */,
-				04AD2F0720B26FFF004C34A6 /* Base32 */,
-				04AD2F1020B28FBD004C34A6 /* Util.swift */,
+				04AD2F1020B28FBD004C34A6 /* Base32.swift */,
 				04AD2F1220B2944A004C34A6 /* Exception.swift */,
+				0477EEE320BD21A400E6DE6D /* CryPtoExtension.swift */,
 			);
 			path = "extension-sodium";
-			sourceTree = "<group>";
-		};
-		04AD2F0720B26FFF004C34A6 /* Base32 */ = {
-			isa = PBXGroup;
-			children = (
-				04AD2F0820B26FFF004C34A6 /* Base16.swift */,
-				04AD2F0920B26FFF004C34A6 /* Base32.swift */,
-				04AD2F0A20B26FFF004C34A6 /* StringExtension.swift */,
-			);
-			path = Base32;
 			sourceTree = "<group>";
 		};
 		09A943BD1A4EB5F500C8A04F = {
@@ -637,7 +626,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Frank Denis";
 				TargetAttributes = {
@@ -745,24 +734,23 @@
 				DD35BB5A20925566006BF351 /* SecretKeyGenerator.swift in Sources */,
 				091C7CDC1A50839D002E5351 /* Sign.swift in Sources */,
 				DD35BB5320924B6F006BF351 /* KeyPairGenerator.swift in Sources */,
+				0477EEE420BD21A400E6DE6D /* CryPtoExtension.swift in Sources */,
 				A0918C781E92489100C1DC33 /* Auth.swift in Sources */,
 				DD1E4D06208E744100BE7A3F /* StateStream.swift in Sources */,
-				04AD2F1120B28FBD004C34A6 /* Util.swift in Sources */,
+				04AD2F1120B28FBD004C34A6 /* Base32.swift in Sources */,
+				0497982820BC3CD600E3E965 /* Crypto.swift in Sources */,
 				094298301EDDAA3B001236B1 /* Stream.swift in Sources */,
 				D2A274061F13AD9300958702 /* KeyDerivation.swift in Sources */,
 				DD35BB6320932A83006BF351 /* Bytes.swift in Sources */,
 				09A5AC121F74466700D3200B /* SecretStream.swift in Sources */,
 				DD35BB5020924A35006BF351 /* NonceGenerator.swift in Sources */,
 				091C7CDA1A507E95002E5351 /* ShortHash.swift in Sources */,
-				04AD2F0B20B26FFF004C34A6 /* Base16.swift in Sources */,
 				095D805B1A4F35CA000B83F9 /* RandomBytes.swift in Sources */,
 				04AD2F1320B2944A004C34A6 /* Exception.swift in Sources */,
 				095D80571A4ED0B4000B83F9 /* GenericHash.swift in Sources */,
 				04AD2F0520B26077004C34A6 /* KeySwitch.swift in Sources */,
 				DD35BB5620924D3A006BF351 /* KeyPairProtocol.swift in Sources */,
 				F87EEC402063C655006C830D /* Aead.swift in Sources */,
-				04AD2F0C20B26FFF004C34A6 /* Base32.swift in Sources */,
-				04AD2F0D20B26FFF004C34A6 /* StringExtension.swift in Sources */,
 				04AD2F0F20B27609004C34A6 /* Hash512.swift in Sources */,
 				094F21EA1A5017CA001C3141 /* Box.swift in Sources */,
 			);
@@ -1076,6 +1064,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PE8K49C24X;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1097,6 +1086,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PE8K49C24X;
