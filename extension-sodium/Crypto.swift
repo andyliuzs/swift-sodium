@@ -20,6 +20,13 @@ public class Crypto{
         print("init crypto")
     }
     
+    
+    /// 获取一个新的Sodium
+    ///
+    /// - Returns: Sodium
+    public func getNewSodium() -> Sodium {
+        return Sodium()
+    }
     /// 加密数据（服务器交互）
     ///
     /// - Parameters:

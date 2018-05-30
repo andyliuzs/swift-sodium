@@ -8,6 +8,7 @@
 
 import Foundation
 import  Sodium
+import Clibsodium
 public class KeySwitch:NSObject{
     
     
