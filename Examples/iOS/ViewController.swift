@@ -13,7 +13,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let sodium = Sodium()
-        
         print("start")
         let aliceKeyPair = sodium.box.keyPair()!
         //        if  publicKey!.isEmpty && privateKey!.isEmpty{
@@ -27,10 +26,6 @@ class ViewController: UIViewController {
     @IBAction func clickBtn(_ sender: Any) {
         
         
-        //
-        
-        
-       
         let nonce:[UInt8] = [48,48,48,48,48,48,48,48,48,48,49,53,50,55, 53,54, 51, 48, 54, 50,51,52,55]
         //000000000001527563062347
         
@@ -44,6 +39,7 @@ class ViewController: UIViewController {
         print("on click btn")
         let sodium = Sodium()
         bobKeyPair = sodium.box.keyPair()!
+     
         let keySwitch = KeySwitch()
         let aliceKeyResult =     keySwitch.createKeyPair()
         print("alice publikey=\(aliceKeyResult.publicKey)\n alice privacekey=\(aliceKeyResult.privateKey)")
