@@ -26,7 +26,7 @@ extension Array where Iterator.Element == UInt8 {
     public func toUnicodeString() ->String{
         var unicodeStr = ""
         for scala in self{
-            unicodeStr = unicodeStr + "\(UnicodeScalar.init((scala as! UInt8)))"
+            unicodeStr = unicodeStr + "\(UnicodeScalar.init(scala))"
         }
         return  unicodeStr
     }

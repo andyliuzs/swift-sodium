@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+import  Sodium
+import Clibsodium
 
      let B32_CHARS: [Character] = ["0","1","2","3","4","5","6","7","8","9","b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","u","v","w","x","y","z"]
  
@@ -64,7 +65,7 @@ import Foundation
     ///
     /// - Parameter input: String
     /// - Returns: Bytes
-    public  func  base32Decode(_ input:String)  -> Bytes {
+    public  func  base32Decode(_ input:String)throws  -> Bytes {
         var outputIndex = 0;
         var inputIndex = 0;
         var bits = 0;
@@ -105,15 +106,16 @@ import Foundation
 ///
 /// - Parameter input: publicKey
 /// - Returns: Bytes
-public func base32DecodePublicKey(_ input:String) ->Bytes?{
+public func base32DecodePublicKey(_ input:String)throws ->Bytes?{
     var result:Bytes?
     guard !input.isEmpty else{
         return result
     }
     if(input.hasSuffix(".k")){
-      result =  base32Decode(String( input[..<input.index(input.endIndex, offsetBy: -2)]))
+      result = try  base32Decode(String( input[..<input.index(input.endIndex, offsetBy: -2)]))
     }else{
-        result = base32Decode(input)
+        let sodium = Sodium()
+      result =   sodium.utils.hex2bin(input)
     }
     return result
 }
