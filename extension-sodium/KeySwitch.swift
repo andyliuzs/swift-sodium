@@ -11,7 +11,9 @@ import  Sodium
 import Clibsodium
 public class KeySwitch:NSObject{
     
-    
+    public override init() {
+        super.init()
+    }
     /// 公钥转 ipv6
     ///
     /// - Parameter publicKey: <#publicKey description#>
