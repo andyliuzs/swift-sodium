@@ -5,8 +5,8 @@ import Clibsodium
 //publikey=
 //alice privacekey=
 var bobKeyPair:Box.KeyPair?
-//var publicKey:String? = "6f99275e5c0ce6239d1cfc88bb007dd86a930a6a2da1f37386e69a9150223978"
-//var privateKey:String? = "7d38745bb0c6a556f71b9ff2480b1e81ab1d18ad25a230e42bd5545e566d48e0"
+var publicKey = "6cc9bf2913cf5611622b62c8365b9418134094b03fa59ff20e5fd085fafcd04a"
+var privateKey = "b0575d0712ad1f678fcbec3ae34fdd389a86ada0778df33a3b67b113573cafe7"
 
 class ViewController: UIViewController {
     override func viewDidLoad() {
@@ -14,76 +14,24 @@ class ViewController: UIViewController {
         
         let sodium = Crypto.share.getNewSodium()
         print("start")
-        let aliceKeyPair = sodium.box.keyPair()!
-        //        if  publicKey!.isEmpty && privateKey!.isEmpty{
-        //            publicKey = sodium.utils.bin2hex(aliceKeyPair.publicKey)
-        //            privateKey = sodium.utils.bin2hex(aliceKeyPair.secretKey)
-        //            print("publickey is nil and private key is null ")
-        //        }
-        
+      
     }
     
     @IBAction func clickBtn(_ sender: Any) {
         
         
-        let nonce:[UInt8] = [48,48,48,48,48,48,48,48,48,48,49,53,50,55, 53,54, 51, 48, 54, 50,51,52,55]
-        //000000000001527563062347
+        let nonce  = "000000000001529393752900"
+Crypto.initSelfKeys(privateKey: privateKey, publicKey: publicKey)
         
-        let nonceStr = nonce.toUnicodeString()
-        let nonce2 = nonceStr.getBytes()
-        print("nonceStr\(nonceStr)")
-        
-        print("nonce2 \(nonce2.description)")
-        print("on click btn")
+        let openResult  = Crypto.share.openBox(message: "RVPYRaxbplHdnFlWv7qzpZpd5TSXF+UlXgzhZqk=", serverPublicKey: "7475f1716920b52ac2057680cc80959b3ec1ec65b221724c30bca26d23b12150", nonce: "000000000001529393752900")
+       print("openResult = \(openResult)")
+        print("nonce str=\(nonce) , nonce byte=\(nonce.getBytes().description)")
         let sodium = Sodium()
-        bobKeyPair = sodium.box.keyPair()!
-     
         let keySwitch = KeySwitch()
-        do{
-//        let aliceKeyResult = try   keySwitch.createKeyPair()
-//            print("alice publikey=\(aliceKeyResult.publicKey)\n alice privacekey=\(aliceKeyResult.privateKey)")
-//            let message = "im is andyliu"
-//            let  boxResult =    Crypto.share.box(message: message, serverPublicKey: base32Encode((bobKeyPair?.publicKey)!)+".k")
-//
-//            print("Encrypted Message:\(boxResult!.boxMessage)")
-//
-//            let messageVerifiedAndDecryptedByBob =
-//                Crypto.share.openBox(message: (boxResult?.boxMessage)!, serverPublicKey: (boxResult?.publicKey)!, nonce: (boxResult?.nonce)!,boboprivateKey:(bobKeyPair?.secretKey)!)
-//            //            sodium.box.open(authenticatedCipherText: (boxResult?.boxMessage.bytes)!, senderPublicKey: (boxResult?.publicKey.bytes)!, recipientSecretKey: (bobKeyPair?.secretKey)!, nonce: (boxResult?.nonce.bytes)!)
-//
-//            print("Decrypted Message:\((messageVerifiedAndDecryptedByBob))")
-//
-//
-//
-            //
-            //        let myThread = Thread(target: self,selector: #selector(ViewController.createKeyPair),object: nil)
-            //        myThread.start()
-            //
-            
-            
-            //       let str = "abcdefgh".bytes
-            //        print("result = \(str)")
-            //      let enCodeStr =   Util.base32Encode(str)
-            //
-            //        print("encode \(enCodeStr)")
-            //
-            //        try! print("decode \( Util.base32Decode(enCodeStr))")
-        }catch{
-            print("error error \(error)")
-        }
-        
-        
-        //公钥转ipv6
-        do{
-            let keySw = KeySwitch()
-       let keyPair =    try keySw.createKeyPair()
-            let ipv6 = try keySw.publicKey2Ipv6(publicKey: "b4nfr62kj3rjmfwqfjgk85uu7m3dngzldzhdwmm0lm5g4f23l7q0.k")
-            print("ipv6 is \(ipv6)")
-        }catch{
-            print("publickey to ipv6 error \(error)")
-        }
+      
+        let boxResult = try!   Crypto.share.box(message: "你好,打嘴吧", serverPublicKey: "7475f1716920b52ac2057680cc80959b3ec1ec65b221724c30bca26d23b12150")
+    print("boxResult msg=\(boxResult?.boxMessage), publickey =\(boxResult?.publicKey) , nonce = \(boxResult?.nonce)")
     }
-    
     @objc func createKeyPair(){
         do{
             

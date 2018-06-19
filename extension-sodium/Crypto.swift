@@ -66,7 +66,7 @@ public class Crypto{
                                                                                             senderSecretKey: sodium.utils.hex2bin(Crypto.privateKey)!)
         let boxMessage:String   = base64Encode((result?.authenticatedCipherText)!)
 
-
+print("box nonce byte \(result?.nonce.description)")
         let nonceStr =  (result?.nonce)!.toUnicodeString()
 
         let mPbKey =  sodium.utils.bin2hex( try base32DecodePublicKey(Crypto.publicKey)!)
@@ -99,7 +99,7 @@ public class Crypto{
     ///   - serverPublicKey: 服务器公钥
     ///   - nonce: 当前加密需要的nonce
     /// - Returns: 解㊙️完成的数据
-    public  func openBox(message:String,serverPublicKey:String,nonce:String,boboprivateKey:Bytes) -> String {
+    public  func openBox(message:String,serverPublicKey:String,nonce:String,selfPrivateKey:Bytes) -> String {
         let sodium = Sodium()
         let base64DencodeMsg:Bytes = base64Decode(message)!
         let senderPublicKey = sodium.utils.hex2bin(serverPublicKey)!
@@ -107,7 +107,7 @@ public class Crypto{
         print("openBox nonce=\(nonceBytes.description)")
         //        let result =   sodium.box.open(authenticatedCipherText: base64DencodeMsg , senderPublicKey: senderPublicKey, recipientSecretKey: sodium.utils.hex2bin(privateKey)!, nonce: nonceBytes)
         //
-        let result =   sodium.box.open(authenticatedCipherText: base64DencodeMsg , senderPublicKey: senderPublicKey, recipientSecretKey: boboprivateKey, nonce: nonceBytes)
+        let result =   sodium.box.open(authenticatedCipherText: base64DencodeMsg , senderPublicKey: senderPublicKey, recipientSecretKey: selfPrivateKey, nonce: nonceBytes)
         return result?.utf8String ?? ""
     }
 }
