@@ -69,9 +69,9 @@ public class Crypto{
 print("box nonce byte \(result?.nonce.description)")
         let nonceStr =  (result?.nonce)!.toUnicodeString()
 
-        let mPbKey =  sodium.utils.bin2hex( try base32DecodePublicKey(Crypto.publicKey)!)
-       
-        return (boxMessage:boxMessage,publicKey:mPbKey!,nonce:nonceStr)
+        let mPbKey =  sodium.utils.bin2hex( try base32DecodePublicKey(Crypto.publicKey)!)!
+//       let mPbKey = Crypto.publicKey
+        return (boxMessage:boxMessage,publicKey:mPbKey,nonce:nonceStr)
     }
     
     /// 解密数据（服务器交互）

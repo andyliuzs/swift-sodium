@@ -18,7 +18,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clickBtn(_ sender: Any) {
-        
+        let data1  = "fgYUE8UnMjUlnJOKrLQ6zYEph3xgC3R24m44F3wDZ5OmCOVSdPcEZzJwayag3I7nrJHPJ9zQj5ihXPqGvw26PR1uUSll3FxqQd4e7ID8MBctmSyfM6GtdEHBHxG9n5E6H3dXJABaY8ak4tp2t2J5I+sl3QlbaNQ+aU0CXRFaVqjf+4IqFdasAKwq0U4NPMCNprE7FFDqx321Lsj0bO0wyDGZQo+Z3/Hy1wMtXdXVy1clTfRKQ4OSsE6F8FkHzYEYpMOodY/dV8KvsIAap56ZZCZMleOQPv03T9ez7/WialkPv8BGjd6MVquQINYdL5boQ2wqBSP7NCIOxc8j/bdRBTAPqhq6M5E="
+        let nonce1 = "000000000001530066625856"
+        let publickey1 =    "df88506dd02f87d57347b3d6e0a40608bd9a48e8247376da8780c405b32c8363"
+     let result =    Crypto.share.openBox(message: data1, serverPublicKey: publickey1, nonce: nonce1)
+        print("result is \(result.description)")
         
         let nonce  = "000000000001529393752900"
 Crypto.initSelfKeys(privateKey: privateKey, publicKey: publicKey)
