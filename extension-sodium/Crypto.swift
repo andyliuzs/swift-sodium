@@ -137,7 +137,10 @@ print("box nonce byte \(result?.nonce.description)")
         print("box nonce byte \(result?.nonce.description)")
         let nonceStr =  (result?.nonce)!.toUnicodeString()
         
-        let mPbKey =  sodium.utils.bin2hex( try base32DecodePublicKey(Crypto.publicKey)!)!
+        let keySwitch = KeySwitch()
+        let priv2pub = keySwitch.private2PubKey(privateKey: selfPrivateKey)!
+        print("boxByPrivKey your publickey is :\(priv2pub)")
+        let mPbKey =  sodium.utils.bin2hex( try base32DecodePublicKey(priv2pub)!)!
         //       let mPbKey = Crypto.publicKey
         return (boxMessage:boxMessage,publicKey:mPbKey,nonce:nonceStr)
     }

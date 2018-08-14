@@ -39,13 +39,29 @@ public class KeySwitch:NSObject{
                 ipv6 = ipv6 + ":"
             }
         }
-        
-        
         return ipv6
         
     }
     
     
+    /// 私钥转公钥
+    ///
+    /// - Parameter privateKey: <#privateKey description#>
+    /// - Returns: <#return value description#>
+    public func private2PubKey(privateKey:String)-> String?{
+        let STANDARD_GROUP_ELEMENT = "0900000000000000000000000000000000000000000000000000000000000000"
+        let sodium = Sodium()
+        let  scalarmultBytes = Int(crypto_scalarmult_curve25519_bytes())
+        var point = Bytes(count: scalarmultBytes)
+        if .SUCCESS == crypto_scalarmult_curve25519(&point,sodium.utils.hex2bin(privateKey),sodium.utils.hex2bin(STANDARD_GROUP_ELEMENT)).exitCode {
+            let publicKey = base32Encode(point) + ".k"
+          //  print("private2PubKey success publicKey :\(publicKey)")
+            return publicKey
+        }else {
+            print("private2PubKey failed")
+            return nil
+        }
+    }
     
     func checkIpv6(ipv6:String) -> Bool{
         guard  !ipv6.isEmpty else{
@@ -71,6 +87,7 @@ public class KeySwitch:NSObject{
             while(true) {
                 
                 let keyPair = sodium.box.keyPair()
+                
                 privateKey = sodium.utils.bin2hex((keyPair?.secretKey)!)
                 publicKey = base32Encode((keyPair?.publicKey)!) + ".k"
                 
@@ -90,7 +107,4 @@ public class KeySwitch:NSObject{
         }
         return (privateKey ?? "",publicKey ?? "",ipv6 ?? "")
     }
-    
-    
-    
 }
