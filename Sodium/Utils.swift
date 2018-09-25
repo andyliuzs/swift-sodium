@@ -190,4 +190,43 @@ public class Utils {
 
         return ()
     }
+    
+    
+    
+    
+    /// 字符串base64编码
+    ///
+    /// - Parameter input:
+    /// - Returns:
+    public func base64Encode(_ input:String)-> String?{
+        return _base64Encode(input)
+    }
+    
+    /// 字符串base64解码
+    ///
+    /// - Parameter base64String:
+    /// - Returns:
+    public func base64Decode(_ base64String:String)-> String?{
+       return _base64Decode(base64String)
+    }
+    
+    
+    
+    /// base64编码 Bytes to String
+    ///
+    /// - Parameter input: <#input description#>
+    /// - Returns: <#return value description#>
+    public func base64Encode(_ input:Bytes) ->String{
+      return _base64Encode(input)
+    }
+    
+    
+    /// base64解码 String to Bytes
+    ///
+    /// - Parameter input: <#input description#>
+    /// - Returns: <#return value description#>
+    public func base64Decode(_ input:String) ->Bytes?{
+       return _base64Decode(input)
+    }
+
 }
