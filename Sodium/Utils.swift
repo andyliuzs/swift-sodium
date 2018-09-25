@@ -196,7 +196,7 @@ public class Utils {
     ///
     /// - Parameter input:
     /// - Returns:
-    public func base64Encode(_ input:String)-> String?{
+    public func base64Encode(_ input:String)throws -> String?{
         let utf8EncodeData = input.data(using: String.Encoding.utf8, allowLossyConversion: true)
         // 将NSData进行Base64编码
         let base64String = utf8EncodeData?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: UInt(0)))
@@ -207,7 +207,7 @@ public class Utils {
     ///
     /// - Parameter base64String:
     /// - Returns:
-    public func base64Decode(_ base64String:String)-> String?{
+    public func base64Decode(_ base64String:String)throws -> String?{
         // 将base64字符串转换成NSData
         let base64Data = NSData(base64Encoded:base64String, options:NSData.Base64DecodingOptions(rawValue: 0))
         // 对NSData数据进行UTF8解码
@@ -221,7 +221,7 @@ public class Utils {
     ///
     /// - Parameter input: <#input description#>
     /// - Returns: <#return value description#>
-    public func base64B2SEncode(_ input:Bytes) ->String{
+    public func base64B2SEncode(_ input:Bytes)throws ->String{
         let utf8EncodeData = Data.init(bytes: input)
         // 将NSData进行Base64编码
         let base64String = utf8EncodeData.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: UInt(0)))
@@ -233,7 +233,7 @@ public class Utils {
     ///
     /// - Parameter input: <#input description#>
     /// - Returns: <#return value description#>
-    public func base64S2BDecode(_ input:String) ->Bytes?{
+    public func base64S2BDecode(_ input:String)throws ->Bytes?{
         if let nsdata = NSData(base64Encoded: input, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters) {
             var bytes = [UInt8](repeating: 0, count: nsdata.length)
             nsdata.getBytes(&bytes)
