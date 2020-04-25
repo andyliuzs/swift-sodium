@@ -53,7 +53,7 @@ public class KeySwitch:NSObject{
         let sodium = Sodium()
         let  scalarmultBytes = Int(crypto_scalarmult_curve25519_bytes())
         var point = Bytes(count: scalarmultBytes)
-        if .SUCCESS == crypto_scalarmult_curve25519(&point,sodium.utils.hex2bin(privateKey),sodium.utils.hex2bin(STANDARD_GROUP_ELEMENT)).exitCode {
+        if .SUCCESS == crypto_scalarmult_curve25519(&point,sodium.utils.hex2bin(privateKey)!,sodium.utils.hex2bin(STANDARD_GROUP_ELEMENT)!).exitCode {
             let publicKey = base32Encode(point) + ".k"
           //  print("private2PubKey success publicKey :\(publicKey)")
             return publicKey

@@ -1,5 +1,5 @@
 os: osx
-language: objective-c
+language: swift
 
 cache:
   directories:
@@ -7,14 +7,12 @@ cache:
 
 matrix:
   include:
-    - osx_image: xcode9.3
-    - osx_image: xcode9.2
-    - osx_image: xcode9.1
-    - osx_image: xcode9
-
+    - osx_image: xcode11.3
 
 script:
   - swift test
+  - pod lib lint
+  - xcodebuild test -scheme Sodium_iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' -sdk iphonesimulator | xcpretty
 
 before_install:
   - brew update

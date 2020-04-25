@@ -1,7 +1,7 @@
 import Foundation
 import Clibsodium
 
-protocol NonceGenerator {
+public protocol NonceGenerator {
     var NonceBytes: Int { get }
     associatedtype Nonce where Nonce == Bytes
 }
@@ -31,7 +31,8 @@ extension NonceGenerator {
         }
         let millisecond =  UInt64(timeStep)
         let nonceStr = NSString.init(format: "%024lu", millisecond!).description
-        nonce = nonceStr.getBytes()
+//        nonce = nonceStr.getBytes() //  call have error bool to Array<Int8>
+         nonce = nonceStr.bytes
         return nonce
     }
 }

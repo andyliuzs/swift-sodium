@@ -119,6 +119,10 @@ class SodiumTests: XCTestCase {
         let (encrypted4, nonce4, mac4) = sodium.secretBox.seal(message: message, secretKey: secretKey)!
         XCTAssertNil(sodium.secretBox.open(cipherText: encrypted4, secretKey: secretKey, nonce: nonce3, mac: mac4), "Shouldn't be able to decrypt with an invalid MAC")
         XCTAssertNil(sodium.secretBox.open(cipherText: encrypted4, secretKey: secretKey, nonce: nonce4, mac: mac3), "Shouldn't be able to decrypt with an invalid nonce")
+
+        // reproduce encryption result with user-provided nonce
+        let encrypted5 = sodium.secretBox.seal(message: message, secretKey: secretKey, nonce: nonce2)!
+        XCTAssertEqual(encrypted5, encrypted2)
     }
 
     func testGenericHash() {
@@ -374,7 +378,7 @@ class SodiumTests: XCTestCase {
 
     func testPad() {
         var data = "test".bytes
-        sodium.utils.pad(data: &data, blockSize: 16)!
+        sodium.utils.pad(bytes: &data, blockSize: 16)!
         XCTAssertTrue(data.count % 16 == 0)
         sodium.utils.unpad(bytes: &data, blockSize: 16)!
         XCTAssertTrue(data.count == 4)
